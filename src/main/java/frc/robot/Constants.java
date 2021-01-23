@@ -31,4 +31,6 @@ public final class Constants {
 
     //Constants
     public static final double throttle = 1; //Maximum Speed during Teleop, 0 to 1
+    public static final double autonomousSpeed = 0.5; //Maximum Speed during Autonomous, 0 to 1
+
 }
