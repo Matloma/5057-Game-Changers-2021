@@ -9,7 +9,10 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 
@@ -26,6 +29,9 @@ public class RobotContainer {
   private final DriveTrain driveTrain;
   private final DriveXbox driveXbox;
 
+  private final AutoNav1 autoNav1;
+
+  private SendableChooser<Command> chooser = new SendableChooser<>();
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -38,6 +44,15 @@ public class RobotContainer {
     driveXbox = new DriveXbox(driveTrain);
     driveXbox.addRequirements(driveTrain);
     driveTrain.setDefaultCommand(driveXbox);
+
+    CommandScheduler.getInstance().registerSubsystem(driveTrain);
+
+    autoNav1 = new AutoNav1(driveTrain);
+
+    chooser.setDefaultOption("AutoNav Course 1", autoNav1);
+    //chooser.addOption("AutoNav Course 2", autoNav2);
+    //chooser.addOption("AutoNav Course 3", autoNav3);
+    SmartDashboard.putData("Autonomous Chooser", chooser);
 
     // Configure the button bindings
     configureButtonBindings();
@@ -59,7 +74,7 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    // Null will run in autonomous
-    return null;
+    // Command selected in SmartDashboard will run in autonomous
+    return chooser.getSelected();
   }
 }
