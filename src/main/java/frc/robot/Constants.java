@@ -16,4 +16,19 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+
+    //CAN Ports
+    public static final int frontLeftPort = 0; //Virtual Port on CAN chain
+    public static final int rearLeftPort = 1; //Virtual Port on CAN chain
+    public static final int frontRightPort = 2; //Virtual Port on CAN chain
+    public static final int rearRightPort = 3; //Virtual Port on CAN chain
+    //PWM Ports
+
+    //PCM Ports
+
+    //Other Ports
+    public static final int xboxPort = 0; //Virtual Port on Laptop
+
+    //Constants
+    public static final double throttle = 1; //Maximum Speed during Teleop, 0 to 1
 }
