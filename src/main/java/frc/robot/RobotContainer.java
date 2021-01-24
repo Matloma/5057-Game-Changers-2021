@@ -29,6 +29,9 @@ public class RobotContainer {
   private final DriveTrain driveTrain;
   private final DriveXbox driveXbox;
 
+  private final Intake intake;
+  private final IntakeXbox intakeXbox;
+
   private final AutoNav1 autoNav1;
 
   private SendableChooser<Command> chooser = new SendableChooser<>();
@@ -44,6 +47,11 @@ public class RobotContainer {
     driveXbox = new DriveXbox(driveTrain);
     driveXbox.addRequirements(driveTrain);
     driveTrain.setDefaultCommand(driveXbox);
+
+    intake = new Intake();
+    intakeXbox = new IntakeXbox(intake);
+    intakeXbox.addRequirements(intake);
+    intake.setDefaultCommand(intakeXbox);
 
     CommandScheduler.getInstance().registerSubsystem(driveTrain);
 

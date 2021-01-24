@@ -23,8 +23,13 @@ public final class Constants {
     public static final int frontRightPort = 2; //Virtual Port on CAN chain
     public static final int rearRightPort = 3; //Virtual Port on CAN chain
     //PWM Ports
+    public static final int intakeMotorPort = 0; //Physical Port for Victor
 
     //PCM Ports
+    public static final int intakePistonPort1 = 0; //Physical Port on PCM for Solenoid
+    public static final int intakePistonPort2 = 1; //Physical Port on PCM for Solenoid
+    public static final int intakePistonPort3 = 2; //Physical Port on PCM for Solenoid
+    public static final int intakePistonPort4 = 3; //Physical Port on PCM for Solenoid
 
     //Other Ports
     public static final int xboxPort = 0; //Virtual Port on Laptop
@@ -32,5 +37,6 @@ public final class Constants {
     //Constants
     public static final double throttle = 1; //Maximum Speed during Teleop, 0 to 1
     public static final double autonomousSpeed = 0.5; //Maximum Speed during Autonomous, 0 to 1
+    public static final double intakeMaxSpeed = 0.5; //Maximum Speed for Intake, 0 to 1
 
 }
