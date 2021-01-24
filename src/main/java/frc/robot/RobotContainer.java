@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -25,6 +26,7 @@ import frc.robot.subsystems.*;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   public static XboxController xbox;
+  public static AnalogInput ultrasonic;
 
   private final DriveTrain driveTrain;
   private final DriveXbox driveXbox;
@@ -42,6 +44,7 @@ public class RobotContainer {
   public RobotContainer() {
 
     xbox = new XboxController(Constants.xboxPort);
+    ultrasonic = new AnalogInput(Constants.ultrasonicAnalogPort);
 
     driveTrain = new DriveTrain();
     driveXbox = new DriveXbox(driveTrain);
@@ -64,6 +67,10 @@ public class RobotContainer {
 
     // Configure the button bindings
     configureButtonBindings();
+  }
+
+  public double ultrasonicDistance(){ //Returns distance by Ultrasonic Sensor in Centimeters
+    return ultrasonic.getAverageVoltage()*Constants.rangeFinderVoltsToCM;
   }
 
   /**
